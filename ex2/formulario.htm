@@ -15,22 +15,61 @@
         <form action="/action_page.php">
             <label for="fname">Qual o seu nome?</label><br>
             <input type="text" id="fname" name="fname"><br><br>
-            <input type="submit" value="Submit">
         </form>
 
-        <h2>Checkboxes</h2>
 
-        <p>The <strong>input type="checkbox"</strong> defines a checkbox:</p>
+        <p style="font-family:courier;font-size:20px;"><b>1. Seu amor está envolvido em uma grande confusão. O que você faz?</b></p>
 
-        <form action="/action_page.php">
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-        <label for="vehicle1"> I have a bike</label><br>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-        <label for="vehicle2"> I have a car</label><br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-        <label for="vehicle3"> I have a boat</label><br><br>
-        <input type="submit" value="Submit">
+        <form>
+            <input type="radio" id="tieta" name="p1" value="Maria de Fatima">
+            <label for="pergunta1"> A) Descubro toda a verdade e vou atrás dele, igual Maria de Fátima em Vale Tudo.</label><br>
+            <input type="radio" id="pergunta2" name="p1" value="Carminha">
+            <label for="pergunta1"> B) Finjo que não sei de nada e começo a arquitetar minha vingança, estilo Carminha.</label><br>
+            <input type="radio" id="pergunta3" name="p1" value="Novela 6">
+            <label for="pergunta1"> C) Choro, sofro, mas continuo acreditando no amor, como uma protagonista de novela das 6.</label><br>
+            <input type="radio" id="pergunta4" name="p1" value="Bibi Perigosa">
+            <label for="pergunta1"> D)Me envolvo na confusão junto com ele que nem a Bibi Perigosa</label><br>
         </form> 
         
+        <p style="font-family:courier;font-size:20px;"><b>2. Você descobre que pode ficar milionário(a). Qual seria sua reação?</b></p>
+
+        <form>
+            <input type="radio" id="pergunta2" name="p2" value="Tieta">
+            <label for="pergunta1"> A) Finalmente! Nasci para ser rica igual a Tieta.</label><br>
+            <input type="radio" id="pergunta2" name="p2" value="Comendador">
+            <label for="pergunta2"> B) Começo imediatamente a pensar em como aumentar ainda mais a fortuna.</label><br>
+            <input type="radio" id="pergunta3" name="p2" value="Pereirão">
+            <label for="pergunta3"> C) Divido tudo com minha família e amigos.</label><br>
+            <input type="radio" id="pergunta4" name="p2" value="Clara">
+            <label for="pergunta4"> D) Fico desconfiado(a): dinheiro demais sempre acaba em tragédia de novela.</label><br>
+        </form> 
+
+        <p style="font-family:courier;font-size:20px;"><b>3. Qual dessas vilãs você teria como inspiração?</b></p>
+
+        <form>
+            <input type="radio" id="pergunta1" name="p3" value="Carminha">
+            <label for="pergunta1"> A) Carminha — Avenida Brasil</label><br>
+            <input type="radio" id="pergunta2" name="p3" value="Nazare">
+            <label for="pergunta2"> B) Nazaré Tedesco — Senhora do Destino</label><br>
+            <input type="radio" id="pergunta3" name="p3" value="Odete">
+            <label for="pergunta3"> C) Odete Roitman — Vale Tudo</label><br>
+            <input type="radio" id="pergunta4" name="p3" value="Flora">
+            <label for="pergunta4"> D) Flora — A Favorita</label><br>
+        </form> 
+
+        <p style="font-family:courier;font-size:20px;"><b>4. Qual o seu aniversário</b></p>
+        <form>
+            <label for="birthday">Aniversário:</label>
+            <input type="date" id="birthday" name="birthday">
+        </form> 
+
+        <p style="font-family:courier;font-size:20px;"><b>Deixe seu comentário</b></p>
+        <form>
+            <label for="texto">Sugestões:<br></label>
+            <input type="text" id="texto" name="texto">
+            <br><br>
+            <input type="submit" value="Enviar">
+        </form> 
+
     </body>
 </html>
