@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Quiz: Qual novela você se identifica mais?</title>
+    </head>
+    <body BGCOLOR = "#dfffcc">
+        <h1 style="color:rgba(177, 20, 20, 0.671);font-size:60px;" >Quiz: Qual novela você se identifica mais?</h1>
+        <center>
+            <img src="imagens/formulario.png" alt="header do site" width="1000" height="700">
+        </center>
+        
+        <p style="font-family:courier;font-size:20px;">
+            Responda as perguntas abaixo e descubra qual novela você se identifica mais!
+        </p>
+        <form action="/action_page.php">
+        <label for="fname">Qual o seu nome?</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+
+        <p style="font-family:courier;font-size:20px;"><b>1. Seu amor está envolvido em uma grande confusão. O que você faz?</b></p>
+
+        <input type="radio" id="tieta" name="p1" value="Maria de Fatima">
+        <label for="pergunta1"> A) Descubro toda a verdade e vou atrás dele, igual Maria de Fátima em Vale Tudo.</label><br>
+        <input type="radio" id="pergunta2" name="p1" value="Carminha">
+        <label for="pergunta1"> B) Finjo que não sei de nada e começo a arquitetar minha vingança, estilo Carminha.</label><br>
+        <input type="radio" id="pergunta3" name="p1" value="Novela 6">
+        <label for="pergunta1"> C) Choro, sofro, mas continuo acreditando no amor, como uma protagonista de novela das 6.</label><br>
+        <input type="radio" id="pergunta4" name="p1" value="Bibi Perigosa">
+        <label for="pergunta1"> D)Me envolvo na confusão junto com ele que nem a Bibi Perigosa</label><br>
+      
+        <p style="font-family:courier;font-size:20px;"><b>2. Você descobre que pode ficar milionário(a). Qual seria sua reação?</b></p>
+
+        <input type="radio" id="pergunta2" name="p2" value="Tieta">
+        <label for="pergunta1"> A) Finalmente! Nasci para ser rica igual a Tieta.</label><br>
+        <input type="radio" id="pergunta2" name="p2" value="Comendador">
+        <label for="pergunta2"> B) Começo imediatamente a pensar em como aumentar ainda mais a fortuna.</label><br>
+        <input type="radio" id="pergunta3" name="p2" value="Pereirão">
+        <label for="pergunta3"> C) Divido tudo com minha família e amigos.</label><br>
+        <input type="radio" id="pergunta4" name="p2" value="Clara">
+        <label for="pergunta4"> D) Fico desconfiado(a): dinheiro demais sempre acaba em tragédia de novela.</label><br>
+
+        <p style="font-family:courier;font-size:20px;"><b>3. Qual dessas vilãs você teria como inspiração?</b></p>
+
+        <input type="radio" id="pergunta1" name="p3" value="Carminha">
+        <label for="pergunta1"> A) Carminha — Avenida Brasil</label><br>
+        <input type="radio" id="pergunta2" name="p3" value="Nazare">
+        <label for="pergunta2"> B) Nazaré Tedesco — Senhora do Destino</label><br>
+        <input type="radio" id="pergunta3" name="p3" value="Odete">
+        <label for="pergunta3"> C) Odete Roitman — Vale Tudo</label><br>
+        <input type="radio" id="pergunta4" name="p3" value="Flora">
+        <label for="pergunta4"> D) Flora — A Favorita</label><br>
+       
+        <p style="font-family:courier;font-size:20px;"><b>4. Qual o seu aniversário</b></p>
+
+        <label for="birthday">Aniversário:</label>
+        <input type="date" id="birthday" name="birthday">
+        <br><br>
+
+        </form> 
+
+        <p style="font-family:courier;font-size:20px;"><b>5. Qual a sua identidade</b></p>
+        <form id="app.identidade" action="">
+        <fieldset>
+        <legend>Identidade (0 = mocinho e 100 = vilão)</legend>
+        <input id="identidade" type="range" min="0" max="100" onchange="mostrarIdentidade(this.value)"/>
+        <output id="identidadeOutput">50</output>
+        <script>
+            function mostrarIdentidade(valor) {
+                document.getElementById("identidadeOutput").value = valor;
+            }
+        </script>
+        </fieldset>
+        </form>
+
+        <p style="font-family:courier;font-size:20px;"><b>6. Qual a sua cor favorita</b></p>
+        <form>
+        <input type="color" id="corfav" name="corfav" value="#ff0000">
+        <label for="corfav">Escolha sua cor favorita</label>
+        </form>
+
+        <form>
+        <p style="font-family:courier;font-size:20px;"><b>Deixe seu comentário</b></p>
+     
+        <label for="texto">Sugestões:<br></label>
+        <input type="text" id="texto" name="texto">
+        <br><br>
+        <input type="submit" value="Enviar">
+        </form>
+
+    </body>
+</html>
