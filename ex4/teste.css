@@ -1,20 +1,20 @@
 H1 {
-font-family: times new roman;
+font-family: papyrus,times new roman;
 font-size: xx-large;
 font-weight: bold;
 color: #9c0d50;
 background: #f1d3b9;
 text-align: center;
 padding: 4pt;
-border-top: thin;
-border-bottom: thin;
+border-top: dotted;
+border-bottom: dotted;
 position: relative;
 }
 H2 {
 font-family: times new roman;
 font-size: x-large;
 font-weight: bold;
-color: #ccfff0;
+color: #08271e;
 background: #acd68a;
 text-align: center;
 padding: 3pt;
@@ -33,7 +33,7 @@ border-bottom: inset;
 position: relative;
 }
 A {
-font-family: family courier;
+font-family: family courier, sans-serif;
 font-weight: bold;
 color: #0000FF;
 text-decoration: underline;
@@ -72,8 +72,8 @@ color: #44076d;
 position: relative;
 }
 P {
-font-family: family courier;
-font-size: 20pt;
+font-family: family courier, lucida console, sans-serif;
+font-size: 12pt;
 color: #44076d;
 position: relative;
 }
