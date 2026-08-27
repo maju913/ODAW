@@ -107,12 +107,9 @@ position: relative;
 border-bottom: thin;
 border-right: thin;
 }
-.highlight {
-background-color: #FFFF00;
+.header{
+    text-align: center;
 }
-.ufo {
-font-family: monospace;
-font-size: large;
-color: #00FF00;
-background-color: #000000;
+body {
+background: #dfffcc;    
 }
