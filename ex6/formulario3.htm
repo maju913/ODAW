@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quiz em etapas para descobrir qual novela mais combina com você.">
+  <title>Quiz: qual novela combina com você?</title>
+  <link rel="shortcut icon" href="imagens/tvicon.png" type="image/png">
+  <link rel="stylesheet" href="css/formulario.css">
+  <script src="js/formulario.js" defer></script>
+</head>
+<body>
+  <a class="home-link" href="principal2.htm">← Home</a>
+
+  <nav class="progress-nav" aria-label="Etapas do quiz">
+    <a href="#apresentacao" class="active" aria-label="Apresentação">0</a>
+    <a href="#pergunta-1" aria-label="Pergunta 1">1</a>
+    <a href="#pergunta-2" aria-label="Pergunta 2">2</a>
+    <a href="#pergunta-3" aria-label="Pergunta 3">3</a>
+    <a href="#pergunta-4" aria-label="Pergunta 4">4</a>
+    <a href="#pergunta-5" aria-label="Pergunta 5">5</a>
+    <a href="#pergunta-6" aria-label="Pergunta 6">6</a>
+    <a href="#comentario" aria-label="Comentário e envio">7</a>
+  </nav>
+
+  <main>
+    <form id="quiz-form">
+      <section class="quiz-step" id="apresentacao">
+        <div class="quiz-card">
+          <h1 class="quiz-title">Qual novela combina com você?</h1>
+          <p class="question">Antes de começar, qual é o seu nome?</p>
+          <label for="nome">Seu nome</label>
+          <input class="text-field" type="text" id="nome" name="nome" autocomplete="name" required>
+          <p class="field-error" id="nome-erro" aria-live="polite"></p>
+          <a class="next-button" href="#pergunta-1" data-next data-validate="name">Começar o quiz</a>
+          <p class="step-hint">Você também pode pressionar Enter.</p>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="pergunta-1">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Pergunta 1 de 6</h2>
+          <p class="question">Seu amor está envolvido em uma grande confusão. O que você faz?</p>
+          <label class="answer"><input type="radio" name="p1" value="Maria de Fátima" required><span>A) Descubro toda a verdade e vou atrás dele, igual Maria de Fátima em Vale Tudo.</span></label>
+          <label class="answer"><input type="radio" name="p1" value="Carminha"><span>B) Finjo que não sei de nada e começo a arquitetar minha vingança, estilo Carminha.</span></label>
+          <label class="answer"><input type="radio" name="p1" value="Novela das seis"><span>C) Choro, sofro, mas continuo acreditando no amor, como uma protagonista de novela das seis.</span></label>
+          <label class="answer"><input type="radio" name="p1" value="Bibi Perigosa"><span>D) Entro na confusão junto com ele, como Bibi Perigosa.</span></label>
+          <p class="step-hint">Ao selecionar uma resposta, você irá para a próxima pergunta.</p>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="pergunta-2">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Pergunta 2 de 6</h2>
+          <p class="question">Você descobre que pode ficar milionário(a). Qual seria sua reação?</p>
+          <label class="answer"><input type="radio" name="p2" value="Tieta" required><span>A) Finalmente! Nasci para ser rica como Tieta.</span></label>
+          <label class="answer"><input type="radio" name="p2" value="Comendador"><span>B) Começo imediatamente a pensar em como aumentar ainda mais a fortuna.</span></label>
+          <label class="answer"><input type="radio" name="p2" value="Pereirão"><span>C) Divido tudo com minha família e meus amigos.</span></label>
+          <label class="answer"><input type="radio" name="p2" value="Clara"><span>D) Fico desconfiado(a): dinheiro demais sempre acaba em tragédia de novela.</span></label>
+          <p class="step-hint">Escolha uma alternativa para avançar automaticamente.</p>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="pergunta-3">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Pergunta 3 de 6</h2>
+          <p class="question">Qual dessas vilãs você teria como inspiração?</p>
+          <label class="answer"><input type="radio" name="p3" value="Carminha" required><span>A) Carminha — Avenida Brasil</span></label>
+          <label class="answer"><input type="radio" name="p3" value="Nazaré"><span>B) Nazaré Tedesco — Senhora do Destino</span></label>
+          <label class="answer"><input type="radio" name="p3" value="Odete"><span>C) Odete Roitman — Vale Tudo</span></label>
+          <label class="answer"><input type="radio" name="p3" value="Flora"><span>D) Flora — A Favorita</span></label>
+          <p class="step-hint">Escolha uma alternativa para avançar automaticamente.</p>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="pergunta-4">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Pergunta 4 de 6</h2>
+          <p class="question">Qual é a data do seu aniversário?</p>
+          <label for="aniversario">Aniversário</label>
+          <input class="date-field" type="date" id="aniversario" name="aniversario" required data-auto-next>
+          <p class="step-hint">Depois de escolher a data, o quiz avança automaticamente.</p>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="pergunta-5">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Pergunta 5 de 6</h2>
+          <p class="question">Qual é a sua identidade? 0 significa mocinho e 100 significa vilão.</p>
+          <label for="identidade">Mova o controle para escolher</label>
+          <input class="range-field" id="identidade" name="identidade" type="range" min="0" max="100" value="50" data-auto-next>
+          <output class="range-value" id="identidade-output" for="identidade">50</output>
+          <p class="step-hint">Ao soltar o controle, o quiz avança automaticamente.</p>
+          <a class="next-button" href="#pergunta-6" data-next>Manter este valor</a>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="pergunta-6">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Pergunta 6 de 6</h2>
+          <p class="question">Qual é a sua cor favorita?</p>
+          <label for="cor-favorita">Clique no quadrado para escolher</label>
+          <input class="color-field" type="color" id="cor-favorita" name="cor-favorita" value="#8c1f2d" data-auto-next>
+          <p class="step-hint">Ao confirmar a cor, você irá para a etapa final.</p>
+          <a class="next-button" href="#comentario" data-next>Manter esta cor</a>
+        </div>
+      </section>
+
+      <section class="quiz-step" id="comentario">
+        <div class="quiz-card">
+          <h2 class="quiz-title">Última etapa</h2>
+          <p class="question">Quer deixar um comentário ou sugestão?</p>
+          <label for="texto">Comentário opcional</label>
+          <textarea class="comment-field" id="texto" name="texto"></textarea>
+          <button class="submit-button" type="submit">Enviar respostas</button>
+
+          <div class="quiz-card result-card" id="resultado" hidden>
+            <h2 class="quiz-title">Fim do capítulo!</h2>
+            <p class="question" id="resultado-texto"></p>
+            <button class="restart-button" type="button" id="reiniciar">Responder novamente</button>
+          </div>
+        </div>
+      </section>
+    </form>
+  </main>
+</body>
+</html>
