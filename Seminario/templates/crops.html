@@ -15,7 +15,7 @@
 <div class="crop-grid">
   {% for crop in crops %}
   <article class="crop-card">
-    <div class="crop-top"><span class="crop-emoji">{{ ['🌱','🥕','🌽','🍓','🍆'] | random }}</span><span class="season-pill">{{ crop.season }}</span></div>
+    <div class="crop-top"><span class="crop-emoji"><img src="{{ url_for('static', filename=crop_season_image(crop.season)) }}" alt="Ícone da estação {{ crop.season }}"></span><span class="season-pill">{{ crop.season }}</span></div>
     <h2>{{ crop.crop_name }}</h2>
     <p class="crop-description">{{ crop.description }}</p>
     <dl><div><dt>Crescimento</dt><dd>{{ crop.days_to_grow|int }} dias</dd></div><div><dt>Venda</dt><dd>{{ crop.sell_price|int }}g</dd></div><div><dt>Lucro</dt><dd class="profit">+{{ crop.profit|int }}g</dd></div></dl>

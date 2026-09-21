@@ -3,7 +3,7 @@
 {% block content %}
 <a class="back-link" href="{{ url_for('crops') }}">← Voltar para culturas</a>
 <section class="detail-hero">
-  <div class="detail-symbol">🌱</div>
+  <div class="detail-symbol"><img src="{{ url_for('static', filename=crop_season_image(crop.season)) }}" alt="Ícone da estação {{ crop.season }}"></div>
   <div><span class="season-pill">{{ crop.season }}</span><h1>{{ crop.crop_name }}</h1><p>{{ crop.description }}</p></div>
 </section>
 <div class="detail-layout">

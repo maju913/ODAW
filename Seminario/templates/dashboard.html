@@ -11,8 +11,8 @@
 <section class="dashboard-section">
   <div class="section-heading"><div><span class="eyebrow">OUTROS DADOS</span><h2>Pesca e comunidade</h2></div><p>Leitura dos arquivos disponíveis em <code>data/archive</code>.</p></div>
   <div class="stats-grid dashboard-stats secondary-stats">
-    <article class="stat-card"><span>CATÁLOGO</span><strong>{{ extra_stats.fish }}</strong><p>espécies de peixes</p></article>
-    <article class="stat-card"><span>RARIDADE</span><strong>{{ extra_stats.legendary }}</strong><p>peixes de alto valor</p></article>
+    <article class="stat-card fish-stat"><img class="fish-icon" src="{{ url_for('static', filename=fish_icon) }}" alt=""><span>CATÁLOGO</span><strong>{{ extra_stats.fish }}</strong><p>espécies de peixes</p></article>
+    <article class="stat-card fish-stat"><img class="fish-icon" src="{{ url_for('static', filename=fish_icon) }}" alt=""><span>RARIDADE</span><strong>{{ extra_stats.legendary }}</strong><p>peixes de alto valor</p></article>
     <article class="stat-card"><span>PELICAN TOWN</span><strong>{{ extra_stats.villagers }}</strong><p>moradores</p></article>
     <article class="stat-card accent"><span>RELACIONAMENTOS</span><strong>{{ extra_stats.candidates }}</strong><p>candidatos a casamento</p></article>
   </div>

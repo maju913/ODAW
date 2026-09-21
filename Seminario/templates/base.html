@@ -11,11 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background-image: url('{{ url_for('static', filename='images/Map_with_Island.png') }}')">
+<body style="background-image: url('{{ url_for('static', filename='images/stardewbackground.png') }}')">
   <aside class="sidenav">
     <a class="brand" href="{{ url_for('index') }}">
-      <span class="brand-icon">🌱</span>
-      <span>Stardew<br><strong>Crop Lab</strong></span>
+      <span class="brand-icon"><img src="{{ url_for('static', filename='images/Blue_Chicken.png') }}" alt="Blue Chicken"></span>
+      <span>Stardew<br><strong>Center</strong></span>
     </a>
 
     <nav aria-label="Navegação principal">
@@ -28,7 +28,7 @@
       <span class="eyebrow">PROJETO FLASK</span>
       <p>Python, Jinja2, Pandas e Matplotlib trabalhando juntos.</p>
     </div>
-    <footer>Trabalho de Python na Web</footer>
+    <footer></footer>
   </aside>
 
   <main class="content">
