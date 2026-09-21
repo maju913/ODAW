@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard de culturas de Stardew Valley feito com Flask e Pandas.">
+  <title>{% block title %}Stardew Crops{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/Duck.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="background-image: url('{{ url_for('static', filename='images/Map_with_Island.png') }}')">
+  <aside class="sidenav">
+    <a class="brand" href="{{ url_for('index') }}">
+      <span class="brand-icon">🌱</span>
+      <span>Stardew<br><strong>Crop Lab</strong></span>
+    </a>
+
+    <nav aria-label="Navegação principal">
+      <a class="nav-link {{ 'active' if request.endpoint == 'index' }}" href="{{ url_for('index') }}"><span>⌂</span> Início</a>
+      <a class="nav-link {{ 'active' if request.endpoint in ['crops', 'crop_detail'] }}" href="{{ url_for('crops') }}"><span>♧</span> Culturas</a>
+      <a class="nav-link {{ 'active' if request.endpoint == 'dashboard' }}" href="{{ url_for('dashboard') }}"><span>▥</span> Dashboard</a>
+    </nav>
+
+    <div class="sidebar-note">
+      <span class="eyebrow">PROJETO FLASK</span>
+      <p>Python, Jinja2, Pandas e Matplotlib trabalhando juntos.</p>
+    </div>
+    <footer>Trabalho de Python na Web</footer>
+  </aside>
+
+  <main class="content">
+    {% if not data_available %}
+      <div class="data-alert" role="status"><strong>CSV de culturas aguardando.</strong> Adicione <code>data/crops.csv</code> ou arquivos <code>*_crops_info.csv</code>.</div>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

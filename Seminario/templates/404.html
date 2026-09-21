@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Página não encontrada{% endblock %}
+{% block content %}<div class="empty-state full"><span>🪧</span><p class="eyebrow">ERRO 404</p><h1>Essa trilha não existe.</h1><p>A página ou cultura que você procurou não foi encontrada.</p><a class="button primary" href="{{ url_for('index') }}">Voltar ao início</a></div>{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Culturas · Stardew Crop Lab{% endblock %}
+{% block content %}
+<header class="page-header"><div><span class="eyebrow">CATÁLOGO</span><h1>Explore as culturas</h1><p>Pesquise, filtre e compare os dados do seu próximo plantio.</p></div><span class="header-mark">♧</span></header>
+
+<form class="filters" method="get">
+  <label class="search"><span>⌕</span><input type="search" name="q" value="{{ query }}" placeholder="Pesquisar pelo nome..."></label>
+  <label><span class="sr-only">Estação</span><select name="season"><option value="">Todas as estações</option>{% for season in seasons %}<option value="{{ season }}" {{ 'selected' if season == selected_season }}>{{ season }}</option>{% endfor %}</select></label>
+  <label><span class="sr-only">Ordenação</span><select name="order"><option value="name" {{ 'selected' if selected_order == 'name' }}>Nome A–Z</option><option value="profit" {{ 'selected' if selected_order == 'profit' }}>Maior lucro</option><option value="growth" {{ 'selected' if selected_order == 'growth' }}>Crescimento rápido</option></select></label>
+  <button class="button primary" type="submit">Filtrar</button>
+</form>
+
+<p class="results-count"><strong>{{ crops|length }}</strong> resultado(s) encontrado(s)</p>
+{% if crops %}
+<div class="crop-grid">
+  {% for crop in crops %}
+  <article class="crop-card">
+    <div class="crop-top"><span class="crop-emoji">{{ ['🌱','🥕','🌽','🍓','🍆'] | random }}</span><span class="season-pill">{{ crop.season }}</span></div>
+    <h2>{{ crop.crop_name }}</h2>
+    <p class="crop-description">{{ crop.description }}</p>
+    <dl><div><dt>Crescimento</dt><dd>{{ crop.days_to_grow|int }} dias</dd></div><div><dt>Venda</dt><dd>{{ crop.sell_price|int }}g</dd></div><div><dt>Lucro</dt><dd class="profit">+{{ crop.profit|int }}g</dd></div></dl>
+    <a class="detail-link" href="{{ url_for('crop_detail', name=crop.crop_name) }}">Ver detalhes <span>→</span></a>
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state"><span>🌾</span><h2>Nenhuma cultura por aqui</h2><p>{% if data_available %}Tente alterar os termos da pesquisa ou os filtros.{% else %}Os cards aparecerão aqui quando o CSV for adicionado.{% endif %}</p></div>
+{% endif %}
+{% endblock %}
