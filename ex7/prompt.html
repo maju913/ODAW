@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7.3</title>
+    <style>
+        body {
+            background-color: #dfffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercicio 7.3</h1>
+    
+    <script>
+        function Saudacao() {
+            var nome = prompt("Digite seu nome:");
+
+            if (nome === null || nome.trim() === "") {
+                alert("Nenhum nome foi informado.");
+                return;
+            }
+
+            var agora = new Date();
+            var hora = agora.getHours();
+
+            var cumprimento;
+
+            if (hora >= 5 && hora < 12) {
+                cumprimento = "Bom dia";
+            } else if (hora >= 12 && hora < 17) {
+                cumprimento = "Boa tarde";
+            } else {
+                cumprimento = "Boa noite";
+            }
+
+            var dias_da_semana = [
+                "domingo", "segunda-feira", "terça-feira",
+                "quarta-feira", "quinta-feira", "sexta-feira", "sábado"
+            ];
+            var dia_da_semana = dias_da_semana[agora.getDay()];
+
+            var dia = String(agora.getDate()).padStart(2, "0");
+            var mes = String(agora.getMonth() + 1).padStart(2, "0");
+            var ano = agora.getFullYear();
+            var dataFormatada = dia + "/" + mes + "/" + ano;
+
+            var mensagem = cumprimento + ", " + nome + ", hoje é: " +
+                        dia_da_semana + ", " + dataFormatada + ".";
+
+            alert(mensagem);
+            document.getElementById("resultado").innerText = mensagem;
+        }
+
+    window.onload = Saudacao;
+
+    </script>
+
+
+
+</body>
+</html>

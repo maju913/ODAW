@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7.1 e 7.2</title>
+    <style>
+        body {
+            background-color: #dfffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercicio 7.1 e 7.2</h1>
+
+    <script>
+        function AltMaiusc(campoTexto, checkboxMin) {
+            campoTexto.value = campoTexto.value.toUpperCase();
+            checkboxMin.checked = false;
+        }
+
+        function AltMinusc(campoTexto, checkboxMax) {
+            campoTexto.value = campoTexto.value.toLowerCase();
+            checkboxMax.checked = false;
+        }
+    </script>
+
+    <p>
+    <form name="TCheckNome">
+        <label for="Nome1">Digite o nome:</label>
+        <input type="text" id="Nome1" size="20" maxlength="20" name="Nome">
+    </p>
+    <p>
+        Minusculo
+        <input type="checkbox" id="Opt1Nome" name="Opt1" value="1" checked
+               onclick="if (this.checked) { AltMinusc(this.form.Nome, this.form.Opt2) }">
+        Maiusculo
+        <input type="checkbox" id="Opt2Nome" name="Opt2" value="2"
+               onclick="if (this.checked) { AltMaiusc(this.form.Nome, this.form.Opt1) }">
+    </p>
+    </form>
+
+    <p>
+    <form name="TCheckSobrenome">
+        <label for="Sobrenome1">Digite o sobrenome:</label>
+        <input type="text" id="Sobrenome1" size="20" maxlength="20" name="Sobrenome">
+    </p>
+    <p>
+        Minusculo
+        <input type="checkbox" id="Opt1Sobrenome" name="Opt1" value="1" checked
+               onclick="if (this.checked) { AltMinusc(this.form.Sobrenome, this.form.Opt2) }">
+        Maiusculo
+        <input type="checkbox" id="Opt2Sobrenome" name="Opt2" value="2"
+               onclick="if (this.checked) { AltMaiusc(this.form.Sobrenome, this.form.Opt1) }">
+    </p>
+    </form>
+
+    <p>
+    <form name="TCheckApelido">
+        <label for="Apelido1">Digite o apelido:</label>
+        <input type="text" id="Apelido1" size="20" maxlength="20" name="Apelido">
+    </p>
+    <p>
+        Minusculo
+        <input type="checkbox" id="Opt1Apelido" name="Opt1" value="1" checked
+               onclick="if (this.checked) { AltMinusc(this.form.Apelido, this.form.Opt2) }">
+        Maiusculo
+        <input type="checkbox" id="Opt2Apelido" name="Opt2" value="2"
+               onclick="if (this.checked) { AltMaiusc(this.form.Apelido, this.form.Opt1) }">
+
+    </p>
+    </form>
+
+    <hr>
+
+    <script>
+        function TestaVal() {
+            var campos = [
+                document.TesteSub.Instituicao,
+                document.TesteSub.Curso,
+                document.TesteSub.Departamento,
+                document.TesteSub.AnoIngresso
+            ];
+
+            for (var i = 0; i < campos.length; i++) {
+                if (campos[i].value.trim() === "") {
+                    alert("Campo obrigatório não preenchido");
+                    campos[i].focus();
+                    return false;
+                }
+            }
+
+            alert("Enviado com sucesso");
+            return true;
+        }
+    </script>
+
+    <p>
+    <form method="POST" name="TesteSub" onSubmit="return TestaVal()" action="janelateste.html">
+        Instituição:
+        <input type="text" size="20" maxlength="20" name="Instituicao" value="">
+        <br>
+        Curso:
+        <input type="text" size="20" maxlength="20" name="Curso" value="">
+        <br>
+        Departamento:
+        <input type="text" size="20" maxlength="20" name="Departamento" value="">
+        <br>
+        Ano de ingresso:
+        <input type="text" size="10" maxlength="10" name="AnoIngresso" value="">
+        <br>
+        Botao Submit
+        <input type="submit" name="Bsub" value="Enviar">
+    </form>
+    </p>
+
+    <hr>
+
+</body>
+</html>

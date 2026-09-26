@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz - Que tipo de estudante você é?</title>
+<style>
+    :root {
+        --bg: #1b1f2a;
+        --card: #242938;
+        --ink: #eef0f4;
+        --muted: #9aa3b5;
+        --accent: #5fb3a3;
+        --accent-2: #e0a458;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, 'Times New Roman', serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .quiz {
+        width: 100%;
+        max-width: 480px;
+        background: var(--card);
+        border-radius: 6px;
+        padding: 36px 32px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        font-weight: normal;
+        line-height: 1.3;
+        margin: 0 0 4px;
+    }
+
+    .sub {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin: 0 0 28px;
+    }
+
+    .pergunta {
+        display: none;
+    }
+
+    .pergunta.ativa {
+        display: block;
+    }
+
+    .pergunta p {
+        font-size: 1.1rem;
+        margin: 0 0 18px;
+    }
+
+    .opcoes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .opcoes button {
+        text-align: left;
+        background: transparent;
+        border: 1px solid #3a4157;
+        color: var(--ink);
+        padding: 12px 16px;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 0.98rem;
+        cursor: pointer;
+        transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .opcoes button:hover,
+    .opcoes button:focus-visible {
+        border-color: var(--accent);
+        background: rgba(95, 179, 163, 0.08);
+        outline: none;
+    }
+
+    .progresso {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin-bottom: 18px;
+    }
+
+    .resultado {
+        display: none;
+    }
+
+    .resultado.ativa {
+        display: block;
+    }
+
+    .resultado h2 {
+        color: var(--accent-2);
+        font-size: 1.4rem;
+        font-weight: normal;
+        margin: 0 0 12px;
+    }
+
+    .resultado p {
+        line-height: 1.6;
+        color: var(--ink);
+    }
+
+    .reiniciar {
+        margin-top: 24px;
+        background: none;
+        border: none;
+        color: var(--accent);
+        font-family: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-decoration: underline;
+        padding: 0;
+    }
+</style>
+</head>
+<body>
+
+<div class="quiz">
+    <h1>Que tipo de estudante você é?</h1>
+    <p class="sub">Responda três perguntas rápidas.</p>
+
+    <div id="area-perguntas"></div>
+    <div id="area-resultado" class="resultado">
+        <h2 id="resultado-titulo"></h2>
+        <p id="resultado-texto"></p>
+        <button class="reiniciar" onclick="reiniciar()">Refazer o quiz</button>
+    </div>
+</div>
+
+<script>
+    // Cada pergunta tem 3 opções, cada uma associada a um perfil: "planejador", "intuitivo" ou "colaborativo"
+    var perguntas = [
+        {
+            texto: "Uma prova importante é daqui a uma semana. O que você faz primeiro?",
+            opcoes: [
+                { texto: "Monto um cronograma de revisão dia a dia", perfil: "planejador" },
+                { texto: "Espero sentir que é a hora certa de começar", perfil: "intuitivo" },
+                { texto: "Chamo um grupo de estudos", perfil: "colaborativo" }
+            ]
+        },
+        {
+            texto: "Você trava num exercício difícil. Qual é a sua reação?",
+            opcoes: [
+                { texto: "Reviso minhas anotações com calma até entender", perfil: "planejador" },
+                { texto: "Tento algumas abordagens diferentes até uma clicar", perfil: "intuitivo" },
+                { texto: "Pergunto a um colega ou no grupo da turma", perfil: "colaborativo" }
+            ]
+        },
+        {
+            texto: "Como você prefere que um trabalho em grupo seja dividido?",
+            opcoes: [
+                { texto: "Com tarefas e prazos bem definidos desde o início", perfil: "planejador" },
+                { texto: "Deixando espaço pra cada um contribuir onde se sentir melhor", perfil: "intuitivo" },
+                { texto: "Discutindo tudo junto, do início ao fim", perfil: "colaborativo" }
+            ]
+        }
+    ];
+
+    var resultados = {
+        planejador: {
+            titulo: "O Planejador",
+            texto: "Você estuda melhor com estrutura: cronogramas, listas e metas claras. Seu ponto forte é a consistência — vale só cuidar para não travar quando o imprevisto foge do plano."
+        },
+        intuitivo: {
+            titulo: "O Intuitivo",
+            texto: "Você segue o próprio ritmo e aprende explorando. Isso te dá flexibilidade e criatividade, mas prazos apertados pedem um empurrão extra de organização."
+        },
+        colaborativo: {
+            titulo: "O Colaborativo",
+            texto: "Você rende mais junto com outras pessoas — trocar ideias é como as coisas fazem sentido pra você. Bons grupos de estudo são seu maior recurso."
+        }
+    };
+
+    var respostas = [];
+    var indiceAtual = 0;
+
+    function renderizarPergunta() {
+        var area = document.getElementById("area-perguntas");
+        var pergunta = perguntas[indiceAtual];
+
+        var html = '<div class="progresso">Pergunta ' + (indiceAtual + 1) + ' de ' + perguntas.length + '</div>';
+        html += '<div class="pergunta ativa"><p>' + pergunta.texto + '</p><div class="opcoes">';
+
+        pergunta.opcoes.forEach(function (opcao, i) {
+            html += '<button onclick="responder(' + i + ')">' + opcao.texto + '</button>';
+        });
+
+        html += '</div></div>';
+        area.innerHTML = html;
+    }
+
+    function responder(indiceOpcao) {
+        var perfilEscolhido = perguntas[indiceAtual].opcoes[indiceOpcao].perfil;
+        respostas.push(perfilEscolhido);
+
+        indiceAtual++;
+
+        if (indiceAtual < perguntas.length) {
+            renderizarPergunta();
+        } else {
+            mostrarResultado();
+        }
+    }
+
+    function mostrarResultado() {
+        // Conta quantas vezes cada perfil apareceu e pega o mais frequente
+        var contagem = {};
+        respostas.forEach(function (perfil) {
+            contagem[perfil] = (contagem[perfil] || 0) + 1;
+        });
+
+        var perfilVencedor = Object.keys(contagem).reduce(function (a, b) {
+            return contagem[a] >= contagem[b] ? a : b;
+        });
+
+        document.getElementById("area-perguntas").innerHTML = "";
+        document.getElementById("resultado-titulo").innerText = resultados[perfilVencedor].titulo;
+        document.getElementById("resultado-texto").innerText = resultados[perfilVencedor].texto;
+        document.getElementById("area-resultado").classList.add("ativa");
+    }
+
+    function reiniciar() {
+        respostas = [];
+        indiceAtual = 0;
+        document.getElementById("area-resultado").classList.remove("ativa");
+        renderizarPergunta();
+    }
+
+    renderizarPergunta();
+</script>
+
+</body>
+</html>
