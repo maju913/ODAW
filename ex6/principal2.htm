@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notícias e informações sobre novelas brasileiras.">
+  <title>Cafezinho, Dona Helena?</title>
+  <link rel="shortcut icon" href="imagens/tvicon.png" type="image/png">
+  <link rel="stylesheet" href="css/principal.css">
+  <script src="js/principal.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <h1>Cafezinho, Dona Helena?</h1>
+    <p class="tagline">O seu site de notícias e informações sobre novelas.</p>
+  </header>
+
+  <nav class="main-nav" aria-label="Navegação principal">
+    <a href="#inicio" aria-current="page">Home</a>
+    <a href="#noticias">Principais notícias</a>
+    <a href="#quiz">Quiz</a>
+  </nav>
+
+  <main class="container">
+    <section class="card presentation" aria-labelledby="bem-vindo">
+      <div>
+        <h2 id="bem-vindo">Home</h2>
+        <p>
+          Chegue mais, aceite um cafezinho e relembre personagens, histórias e
+          aberturas que fizeram parte da televisão brasileira.
+        </p>
+      </div>
+      <img src="imagens/logo.png" alt="Logo do site Cafezinho, Dona Helena?">
+    </section>
+
+    <section class="card" id="noticias" aria-labelledby="titulo-noticias">
+      <h2 id="titulo-noticias">Principais notícias</h2>
+      <div class="gallery">
+        <a class="story-link" href="atrizes.htm">
+          <img src="imagens/img3.png" alt="Fernanda Torres e Adriana Esteves">
+          <span>Atrizes que se transformam em cada papel</span>
+        </a>
+        <a class="story-link" href="novelas.htm">
+          <img src="imagens/img3.png" alt="Montagem sobre novelas brasileiras">
+          <span>Novelas que marcaram época</span>
+        </a>
+        <a class="story-link" href="aberturas.htm">
+          <img src="imagens/img3.png" alt="Montagem de aberturas de novelas">
+          <span>As melhores aberturas de novelas</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="card" id="quiz" aria-labelledby="titulo-quiz">
+      <h2 id="titulo-quiz">Qual novela combina com você?</h2>
+      <p>Responda ao quiz e descubra com qual novela você mais se identifica.</p>
+      <a class="button" href="formulario3.htm">Fazer o quiz</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Cafezinho, Dona Helena?</p>
+  </footer>
+</body>
+</html>

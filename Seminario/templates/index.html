@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Início · Stardew Crop Lab{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">DADOS DA FAZENDA</span>
+    <h1>Guia do<br><em>Fazendeiro.</em></h1>
+    <p>Analise para saber quais sementes oferecem o melhor retorno para cada estação.</p>
+    <div class="actions">
+      <a class="button primary" href="{{ url_for('crops') }}">Explorar culturas <span>→</span></a>
+      <a class="button secondary" href="{{ url_for('dashboard') }}">Ver dashboard</a>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true" style="background-image: url('{{ url_for('static', filename=current_season.image) }}')">
+    <div class="art-label"><small>ESTAÇÃO ATUAL</small><strong>{{ current_season.icon }} {{ current_season.name }}</strong></div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading"><div><span class="eyebrow">VISÃO GERAL</span><h2>A fazenda em números</h2></div><p>Indicadores calculados pelo Pandas a partir do CSV.</p></div>
+  <div class="stats-grid">
+    <article class="stat-card"><span>01</span><strong>{{ stats.total }}</strong><p>culturas cadastradas</p></article>
+    <article class="stat-card"><span>02</span><strong>{{ stats.seasons }}</strong><p>estações disponíveis</p></article>
+    <article class="stat-card"><span>03</span><strong>{{ stats.highest_price }}g</strong><p>maior preço de venda</p></article>
+    <article class="stat-card accent"><span>04</span><strong>{{ stats.fastest }}</strong><p>dias no cultivo mais rápido</p></article>
+  </div>
+</section>
+{% endblock %}

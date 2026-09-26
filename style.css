@@ -1,317 +1,252 @@
-/* ------------------------------
-   CONFIGURAÇÕES GERAIS
------------------------------- */
+:root {
+  --lilas: #c7a4df;
+  --lilas-escuro: #493651;
+  --rosa: #e9a0c5;
+  --rosa-escuro: #d986b0;
+  --verde: #c9e879;
+  --creme: #fffaf2;
+  --texto: #67586b;
+}
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-
-    background-color: #c7a4df;
-
-    color: #3d3045;
-
-    min-height: 100vh;
+  min-height: 100vh;
+  color: #3d3045;
+  background: var(--lilas);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* ------------------------------
-   CONTAINER PRINCIPAL
------------------------------- */
-
-.container {
-    width: 90%;
-    max-width: 1100px;
-
-    margin: 40px auto;
+/* O template é usado apenas nesta divisão: painel esquerdo e conteúdo direito. */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 380px;
+  height: 100%;
+  padding: 32px;
+  overflow-y: auto;
+  background: var(--creme);
+  box-shadow: 5px 0 18px rgba(60, 40, 70, 0.14);
 }
 
-
-/* ------------------------------
-   CABEÇALHO
------------------------------- */
-
-.cabecalho {
-    background-color: #fffaf2;
-
-    border-radius: 30px;
-
-    padding: 35px;
-
-    display: flex;
-
-    gap: 40px;
-
-    align-items: center;
-
-    margin-bottom: 35px;
-
-    box-shadow: 0 8px 20px rgba(60, 40, 70, 0.12);
+.content {
+  margin-left: 380px;
+  padding: 38px;
 }
-
-
-/* ------------------------------
-   IMAGENS
------------------------------- */
 
 .imagens {
-    width: 35%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 15px;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  margin-bottom: 28px;
 }
 
 .imagem-placeholder {
-    display: block;
-
-    width: 100%;
-    height: 120px;
-
-    border-radius: 20px;
-
-    border: 3px solid #e7a0c4;
-
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 150px;
+  border: 3px solid #e7a0c4;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
+.descricao-materia h2 {
+  margin: 10px 0 16px;
+  color: var(--lilas-escuro);
+  font-size: 1.6rem;
+}
 
-/* ------------------------------
-   INTRODUÇÃO
------------------------------- */
-
-.introducao {
-    flex: 1;
+.descricao-materia p {
+  margin-bottom: 12px;
+  color: var(--texto);
+  line-height: 1.6;
 }
 
 .link-autora {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  text-decoration-color: var(--rosa-escuro);
 }
 
 .tag {
-    display: inline-block;
-
-    background-color: #e9a0c5;
-
-    color: white;
-
-    padding: 7px 15px;
-
-    border-radius: 20px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 12px;
+  display: inline-block;
+  padding: 7px 15px;
+  border-radius: 20px;
+  color: white;
+  background: var(--rosa);
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
-.introducao h1 {
-    font-size: 38px;
-
-    margin-bottom: 18px;
-
-    color: #493651;
+.cabecalho {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto 35px;
+  padding: 30px;
+  border-radius: 30px;
+  background: var(--creme);
+  box-shadow: 0 8px 20px rgba(60, 40, 70, 0.12);
 }
 
-.introducao p {
-    line-height: 1.6;
-
-    margin-bottom: 10px;
-
-    color: #67586b;
+.icone-titulo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
+.cabecalho h1 {
+  margin: 10px 0 8px;
+  color: var(--lilas-escuro);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
 
-/* ------------------------------
-   TÍTULO DOS EXERCÍCIOS
------------------------------- */
+.cabecalho p {
+  color: var(--texto);
+  line-height: 1.5;
+}
 
 .exercicios {
-    margin-top: 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.exercicios h2 {
-    color: #fffaf2;
-
-    font-size: 30px;
-
-    margin-bottom: 5px;
+.exercicios > h2 {
+  margin-bottom: 12px;
+  color: var(--creme);
+  font-size: 1.9rem;
 }
-
-.descricao {
-    color: #f5eaf9;
-
-    margin-bottom: 20px;
-}
-
-
-/* ------------------------------
-   ÁREAS DOS EXERCÍCIOS
------------------------------- */
 
 .area-exercicios {
-    background-color: #fffaf2;
-
-    border-radius: 25px;
-
-    padding: 25px;
-
-    margin-bottom: 20px;
-
-    box-shadow: 0 6px 15px rgba(60, 40, 70, 0.10);
-
-    border-left: 8px solid #e99fc2;
+  margin-bottom: 20px;
+  padding: 25px;
+  border-left: 8px solid var(--rosa);
+  border-radius: 25px;
+  background: var(--creme);
+  box-shadow: 0 6px 15px rgba(60, 40, 70, 0.1);
 }
 
-
-/* ------------------------------
-   TÍTULO DA ÁREA
------------------------------- */
-
 .titulo-area {
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    margin-bottom: 20px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .numero {
-    width: 55px;
-    height: 55px;
-
-    background-color: #c9e879;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-weight: bold;
-
-    color: #53632a;
-
-    flex-shrink: 0;
+  display: flex;
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #53632a;
+  background: var(--verde);
+  font-weight: bold;
 }
 
 .titulo-area h3 {
-    color: #493651;
-
-    font-size: 21px;
-
-    margin-bottom: 5px;
+  margin-bottom: 5px;
+  color: var(--lilas-escuro);
+  font-size: 1.3rem;
 }
 
 .titulo-area p {
-    color: #88798b;
-
-    font-size: 14px;
+  color: #88798b;
+  font-size: 0.9rem;
 }
 
-
-/* ------------------------------
-   BOTÕES
------------------------------- */
-
 .botoes {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .botao {
-    text-decoration: none;
-
-    background-color: #e9a0c5;
-
-    color: white;
-
-    padding: 11px 20px;
-
-    border-radius: 25px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    transition: 0.2s;
+  padding: 11px 20px;
+  border-radius: 25px;
+  color: white;
+  background: var(--rosa);
+  font-size: 0.88rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.botao:hover {
-    background-color: #d986b0;
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 4px 8px rgba(80, 50, 70, 0.15);
+.botao:hover,
+.botao:focus-visible {
+  background: var(--rosa-escuro);
+  box-shadow: 0 4px 8px rgba(80, 50, 70, 0.15);
+  transform: translateY(-2px);
 }
 
+.botao.destaque {
+  color: #53632a;
+  background: var(--verde);
+}
 
-/* ------------------------------
-   RODAPÉ
------------------------------- */
+.indisponivel {
+  cursor: default;
+  opacity: 0.65;
+}
 
 footer {
-    text-align: center;
-
-    padding: 25px;
-
-    color: #f5eaf9;
-
-    font-size: 13px;
+  padding: 25px;
+  color: #f5eaf9;
+  font-size: 0.82rem;
+  text-align: center;
 }
 
+@media (max-width: 850px) {
+  .sidenav {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 25px;
+  }
 
-/* ------------------------------
-   RESPONSIVIDADE
------------------------------- */
+  .content {
+    margin-left: 0;
+    padding: 25px;
+  }
 
-@media (max-width: 700px) {
+  .imagens {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-    .container {
-        width: 94%;
+@media (max-width: 520px) {
+  .content {
+    padding: 16px;
+  }
 
-        margin: 20px auto;
-    }
+  .sidenav {
+    padding: 20px;
+  }
 
-    .cabecalho {
-        flex-direction: column;
+  .imagem-placeholder {
+    height: 110px;
+  }
 
-        align-items: stretch;
+  .cabecalho {
+    padding: 22px;
+  }
 
-        padding: 25px;
-    }
+  .icone-titulo {
+    display: none;
+  }
 
-    .imagens {
-        width: 100%;
-
-        flex-direction: row;
-    }
-
-    .imagem-placeholder {
-        height: 100px;
-    }
-
-    .introducao h1 {
-        font-size: 30px;
-    }
-
-    .area-exercicios {
-        padding: 20px;
-    }
-
+  .area-exercicios {
+    padding: 20px;
+  }
 }

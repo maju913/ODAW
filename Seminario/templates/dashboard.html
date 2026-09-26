@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · Stardew Crop Lab{% endblock %}
+{% block content %}
+<header class="page-header"><div><span class="eyebrow">ANÁLISE DE DADOS</span><h1>Dashboard da fazenda</h1><p>Visualizações produzidas dinamicamente com Pandas e Matplotlib.</p></div><span class="header-mark">▥</span></header>
+<div class="stats-grid dashboard-stats"><article class="stat-card"><span>TOTAL</span><strong>{{ stats.total }}</strong><p>culturas</p></article><article class="stat-card"><span>VALOR</span><strong>{{ stats.highest_price }}g</strong><p>maior venda</p></article><article class="stat-card"><span>RETORNO</span><strong>+{{ stats.best_profit }}g</strong><p>maior lucro</p></article><article class="stat-card accent"><span>RAPIDEZ</span><strong>{{ stats.fastest }}</strong><p>dias mínimos</p></article></div>
+{% if has_data %}
+<div class="chart-grid"><figure class="chart-card"><figcaption><span class="eyebrow">DISTRIBUIÇÃO</span><h2>Culturas por estação</h2></figcaption><img src="{{ url_for('chart', chart_name='seasons') }}" alt="Gráfico de culturas por estação"></figure><figure class="chart-card"><figcaption><span class="eyebrow">RENTABILIDADE</span><h2>Maiores lucros</h2></figcaption><img src="{{ url_for('chart', chart_name='profits') }}" alt="Gráfico das culturas mais lucrativas"></figure><figure class="chart-card wide"><figcaption><span class="eyebrow">CORRELAÇÃO</span><h2>Crescimento × preço de venda</h2></figcaption><img src="{{ url_for('chart', chart_name='growth') }}" alt="Gráfico comparando crescimento e preço"></figure></div>
+{% else %}<div class="empty-state"><span>📊</span><h2>Gráficos prontos para crescer</h2><p>Adicione o CSV e recarregue a página para gerar as visualizações.</p></div>{% endif %}
+
+{% if has_archive_data %}
+<section class="dashboard-section">
+  <div class="section-heading"><div><span class="eyebrow">OUTROS DADOS</span><h2>Pesca e comunidade</h2></div><p>Leitura dos arquivos disponíveis em <code>data/archive</code>.</p></div>
+  <div class="stats-grid dashboard-stats secondary-stats">
+    <article class="stat-card fish-stat"><img class="fish-icon" src="{{ url_for('static', filename=fish_icon) }}" alt=""><span>CATÁLOGO</span><strong>{{ extra_stats.fish }}</strong><p>espécies de peixes</p></article>
+    <article class="stat-card fish-stat"><img class="fish-icon" src="{{ url_for('static', filename=fish_icon) }}" alt=""><span>RARIDADE</span><strong>{{ extra_stats.legendary }}</strong><p>peixes de alto valor</p></article>
+    <article class="stat-card"><span>PELICAN TOWN</span><strong>{{ extra_stats.villagers }}</strong><p>moradores</p></article>
+    <article class="stat-card accent"><span>RELACIONAMENTOS</span><strong>{{ extra_stats.candidates }}</strong><p>candidatos a casamento</p></article>
+  </div>
+  <div class="chart-grid">
+    <figure class="chart-card"><figcaption><span class="eyebrow">PESCA</span><h2>Peixes por estação</h2></figcaption><img src="{{ url_for('chart', chart_name='fish_seasons') }}" alt="Gráfico de peixes disponíveis por estação"></figure>
+    <figure class="chart-card"><figcaption><span class="eyebrow">COMUNIDADE</span><h2>Distribuição dos moradores</h2></figcaption><img src="{{ url_for('chart', chart_name='villagers') }}" alt="Gráfico de distribuição dos moradores"></figure>
+    <figure class="chart-card wide"><figcaption><span class="eyebrow">RISCO E RECOMPENSA</span><h2>Dificuldade × preço dos peixes</h2><p class="chart-note">A cor indica a quantidade de XP concedida pela captura.</p></figcaption><img src="{{ url_for('chart', chart_name='fish_value') }}" alt="Dispersão entre dificuldade e preço dos peixes"></figure>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
