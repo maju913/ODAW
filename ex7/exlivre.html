@@ -3,24 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 7</title>
-    <style>
-        body {
-            background-color: #dfffcc;
-        }
-    </style>
+    <title>Exercicio 7.4</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Exercicio 7.4</h1>
-    <script> 
 
-    function Vermult(Lista) { 
-    var opcoes = "" 
-    for (i = 0 ; i < Lista.length ; i++) { 
-    if (Lista.options[i].selected) { 
-    opcoes += (Lista.options[i].value + ", ") } 
-    } 
-    alert ("As opcoes escolhidas foram : " + opcoes) } 
+    <div class="quiz">
+        <h1>Que tipo de personagem de novela você é?</h1>
+        <p class="sub">Responda três perguntas rápidas.</p>
+
+        <div id="area-perguntas"></div>
+        <div id="area-resultado" class="resultado">
+            <h2 id="resultado-titulo"></h2>
+            <p id="resultado-texto"></p>
+            <button class="reiniciar" onclick="reiniciar()">Refazer o quiz</button>
+        </div>
+    </div>
+
+
+    <script> 
+        var perguntas = [
+            {
+                texto: "O bebê da sua irmã nasceu, o que você faz?",
+                opcoes: [
+                    { texto: "Me ofereço para ajudar com os cuidados", perfil: "Mocinho" },
+                    { texto: "Faço um uma grande festa com churrasco e cerveja", perfil: "Alívio cômico" },
+                    { texto: "Me preocupo se o bebê vai receber toda a atenção agora", perfil: "Vilão" }
+                ]
+            },
+            {
+                texto: "Você descobre que seu melhor amigo(a) está traindo você. Qual é sua reação?",
+                opcoes: [
+                    { texto: "Me sente traido e evito contato com ele/ela", perfil: "Mocinho" },
+                    { texto: "Me divirto com a situação e conto para os outros", perfil: "Alívio cômico" },
+                    { texto: "Continuo como se nada tivesse acontecido, mas planejo minha vingança", perfil: "Vilão" }
+                ]
+            },
+            {
+                texto: "Você descobre que seu chefe está roubando dinheiro da empresa. O que você faz?",
+                opcoes: [
+                    { texto: "Denuncio o comportamento", perfil: "Mocinho" },
+                    { texto: "Tento fazer todo mundo descobrir, sem sujar meu nome", perfil: "Alívio cômico" },
+                    { texto: "Dou um jeito de entrar no esquema", perfil: "Vilão" }
+                ]
+            }
+        ];
+
+        var resultados = {
+            Mocinho: {
+                titulo: "O Mocinho",
+                texto: "Você é o herói da história, sempre buscando fazer o bem e proteger os outros. Sua coragem e integridade são admiráveis."
+            },
+            "Alívio cômico": {
+                titulo: "O Alívio Cômico",
+                texto: "Você traz leveza e humor para a trama, ajudando a aliviar a tensão. Sua presença é essencial para equilibrar os momentos dramáticos."
+            },
+            Vilão: {
+                titulo: "O Vilão",
+                texto: "Você é o antagonista da história, sempre buscando seus próprios interesses. Sua astúcia e determinação fazem de você um adversário formidável, Será que você merece redenção?"
+            }
+        };
+
+    var respostas = [];
+    var indiceAtual = 0;
+
+    function renderizarPergunta() {
+        var area = document.getElementById("area-perguntas");
+        var pergunta = perguntas[indiceAtual];
+
+        var html = '<div class="progresso">Pergunta ' + (indiceAtual + 1) + ' de ' + perguntas.length + '</div>';
+        html += '<div class="pergunta ativa"><p>' + pergunta.texto + '</p><div class="opcoes">';
+
+        pergunta.opcoes.forEach(function (opcao, i) {
+            html += '<button onclick="responder(' + i + ')">' + opcao.texto + '</button>';
+        });
+
+        html += '</div></div>';
+        area.innerHTML = html;
+    }
+
+    function responder(indiceOpcao) {
+        var perfilEscolhido = perguntas[indiceAtual].opcoes[indiceOpcao].perfil;
+        respostas.push(perfilEscolhido);
+
+        indiceAtual++;
+
+        if (indiceAtual < perguntas.length) {
+            renderizarPergunta();
+        } else {
+            mostrarResultado();
+        }
+    }
+
+    function mostrarResultado() {
+            var contagem = {};
+            respostas.forEach(function (perfil) {
+                contagem[perfil] = (contagem[perfil] || 0) + 1;
+            });
+
+            var perfilVencedor = Object.keys(contagem).reduce(function (a, b) {
+                return contagem[a] >= contagem[b] ? a : b;
+            });
+
+            document.getElementById("area-perguntas").innerHTML = "";
+            document.getElementById("resultado-titulo").innerText = resultados[perfilVencedor].titulo;
+            document.getElementById("resultado-texto").innerText = resultados[perfilVencedor].texto;
+            document.getElementById("area-resultado").classList.add("ativa");
+        }
+
+        function reiniciar() {
+            respostas = [];
+            indiceAtual = 0;
+            document.getElementById("area-resultado").classList.remove("ativa");
+            renderizarPergunta();
+        }
+
+        renderizarPergunta();
 
     </script> 
 
