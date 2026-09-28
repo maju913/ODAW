@@ -85,12 +85,19 @@ var NOVELAS = {
   "A Favorita": "Ninguém sabe quem é a mocinha e quem é a vilã, e você gosta assim: seu lado misterioso é o seu charme."
 };
 
+var imagens = {
+  "Vale Tudo": "../ex8/imagens/valetudo_todas.jpg",
+  "Avenida Brasil": "../ex8/imagens/carminha2.jpg",
+  "Senhora do Destino": "../ex8/imagens/nazare.jpeg",
+  "A Favorita": "../ex8/imagens/a_favorita.jpg"
+};
+
 // Cada resposta das perguntas 1 a 3 vale 1 ponto para uma novela
 var PONTOS = {
   p1: {
     "Maria de Fátima": "Vale Tudo",
     "Carminha": "Avenida Brasil",
-    "Novela das seis": "Senhora do Destino",
+    "Protagonista": "Senhora do Destino",
     "Bibi Perigosa": "A Favorita"
   },
   p2: {
@@ -148,6 +155,7 @@ form.addEventListener("submit", function (event) {
     firstName + ", a novela que mais combina com você é:";
   document.getElementById("resultado-novela").textContent = novela;
   document.getElementById("resultado-descricao").textContent = NOVELAS[novela];
+  document.getElementById("resultado-imagem").src = imagens[novela];
   resultCard.hidden = false;
   resultCard.scrollIntoView({ behavior: "smooth", block: "center" });
 });
