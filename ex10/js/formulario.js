@@ -86,10 +86,10 @@ var NOVELAS = {
 };
 
 var imagens = {
-  "Vale Tudo": "../ex8/imagens/valetudo_todas.jpg",
-  "Avenida Brasil": "../ex8/imagens/carminha2.jpg",
-  "Senhora do Destino": "../ex8/imagens/nazare.jpeg",
-  "A Favorita": "../ex8/imagens/a_favorita.jpg"
+  "Vale Tudo": "imagens/valetudo_todas.jpg",
+  "Avenida Brasil": "imagens/carminha2.jpg",
+  "Senhora do Destino": "imagens/nazare.jpeg",
+  "A Favorita": "imagens/a_favorita.jpg"
 };
 
 // Cada resposta das perguntas 1 a 3 vale 1 ponto para uma novela

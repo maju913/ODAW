@@ -1,0 +1,95 @@
+
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 102
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+ 
+MariaDB [odaw]> create database odaw;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [odaw]> use odaw;
+Database changed
+
+
+MariaDB [odaw]> create table usuario(id int auto_increment primary key,
+                      nome varchar(100) not null,
+                      idade int,
+                      email varchar(150));
+Query OK, 0 rows affected (0.005 sec)
+
+MariaDB [odaw]> show tables;
++----------------+
+| Tables_in_odaw |
++----------------+
+| usuario        |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [odaw]> describe usuario;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nome  | varchar(100) | NO   |     | NULL    |                |
+| idade | int(11)      | YES  |     | NULL    |                |
+| email | varchar(150) | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+4 rows in set (0.008 sec)
+
+MariaDB [odaw]> insert into usuario (nome, idade, email) values ('Maria', 26, 'maria@mail.com');
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [odaw]> select * from usuario;
++----+-------+-------+----------------+
+| id | nome  | idade | email          |
++----+-------+-------+----------------+
+|  1 | Maria |    26 | maria@mail.com |
++----+-------+-------+----------------+
+1 row in set (0.000 sec)
+
+MariaDB [odaw]> update usuario set idade = 25 where id = 1;
+Query OK, 1 row affected (0.001 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [odaw]> select * from usuario;
++----+-------+-------+----------------+
+| id | nome  | idade | email          |
++----+-------+-------+----------------+
+|  1 | Maria |    25 | maria@mail.com |
++----+-------+-------+----------------+
+1 row in set (0.000 sec)
+
+MariaDB [odaw]> insert into usuario (nome, idade, email) values ('Joao', 24, 'joao@mail.com');
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [odaw]> select * from usuario;
++----+-------+-------+----------------+
+| id | nome  | idade | email          |
++----+-------+-------+----------------+
+|  1 | Maria |    25 | maria@mail.com |
+|  2 | Joao  |    24 | joao@mail.com  |
++----+-------+-------+----------------+
+2 rows in set (0.000 sec)
+
+MariaDB [odaw]> delete from usuario where id = 2;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [odaw]> select * from usuario;
++----+-------+-------+----------------+
+| id | nome  | idade | email          |
++----+-------+-------+----------------+
+|  1 | Maria |    25 | maria@mail.com |
++----+-------+-------+----------------+
+1 row in set (0.000 sec)
+
+MariaDB [odaw]> drop table usuario;
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [odaw]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [odaw]> drop database odaw;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]>
