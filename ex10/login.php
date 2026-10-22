@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | Cafezinho, Dona Helena?</title>
-  <link rel="shortcut icon" href="../ex6/imagens/tvicon.png" type="image/png">
+  <link rel="shortcut icon" href="imagens/tvicon.png" type="image/png">
   <link rel="stylesheet" href="css/auth.css">
 </head>
 <body>

@@ -49,7 +49,7 @@ function marcado(string $campo, string $valor, array $dados): string
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Criar conta | Cafezinho, Dona Helena?</title>
-  <link rel="shortcut icon" href="../ex6/imagens/tvicon.png" type="image/png">
+  <link rel="shortcut icon" href="imagens/tvicon.png" type="image/png">
   <link rel="stylesheet" href="css/auth.css">
 </head>
 <body>
@@ -83,7 +83,11 @@ function marcado(string $campo, string $valor, array $dados): string
         <?php if ($erros): ?>
           <div class="error-summary" role="alert">
             <strong>Revise o formulário.</strong>
-            <p>Todos os campos precisam ser preenchidos corretamente.</p>
+            <ul>
+              <?php foreach ($erros as $erro): ?>
+                <li><?= e($erro) ?></li>
+              <?php endforeach; ?>
+            </ul>
           </div>
         <?php endif; ?>
 
@@ -173,4 +177,3 @@ function marcado(string $campo, string $valor, array $dados): string
   </main>
 </body>
 </html>
-
