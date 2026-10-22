@@ -46,6 +46,21 @@ body {
   text-decoration: none;
 }
 
+.account-area form {
+  margin: 0;
+}
+
+.account-area .admin-button {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 18px;
+  color: white;
+  background: var(--texto);
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .account-area .account-highlight {
   color: white;
   background: var(--vinho);

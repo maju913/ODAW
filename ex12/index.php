@@ -20,11 +20,17 @@ $usuarioLogado = $_SESSION['usuario'] ?? null;
   <div class="account-area" aria-label="Área da conta">
     <?php if ($usuarioLogado): ?>
       <span>Olá, <strong><?= e($usuarioLogado['nome']) ?></strong>!</span>
+      <a href="meu_cadastro.php">Meu cadastro</a>
       <a href="logout.php">Sair</a>
     <?php else: ?>
       <a href="login.php">Entrar</a>
       <a class="account-highlight" href="cadastro.php">Criar conta</a>
     <?php endif; ?>
+    <form method="post" action="admin.php">
+      <input type="hidden" name="csrf_token" value="<?= e(tokenCsrf()) ?>">
+      <input type="hidden" name="acao" value="entrar">
+      <button class="admin-button" type="submit">Admin</button>
+    </form>
   </div>
 
   <header class="site-header" id="inicio">
